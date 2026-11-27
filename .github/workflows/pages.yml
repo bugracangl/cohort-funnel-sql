@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Pages'i Hazırla
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v6
 
       - name: Artifakt Yükle
         uses: actions/upload-pages-artifact@v3
