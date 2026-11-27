@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: GitHub Pages'e Dağıt
 
 on:
   push:
@@ -21,17 +21,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Depoyu Al
         uses: actions/checkout@v4
 
-      - name: Setup Pages
+      - name: Pages'i Hazırla
         uses: actions/configure-pages@v4
 
-      - name: Upload artifact
+      - name: Artifakt Yükle
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
-      - name: Deploy to GitHub Pages
+      - name: GitHub Pages'e Dağıt
         id: deployment
         uses: actions/deploy-pages@v4

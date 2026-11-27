@@ -1,4 +1,4 @@
-# pre-commit hooks configuration
+# pre-commit hooks yapılandırması
 # Kurulum: pip install pre-commit && pre-commit install
 # Çalıştırma: pre-commit run --all-files
 

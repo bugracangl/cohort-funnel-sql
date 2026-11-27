@@ -1,4 +1,4 @@
-name: Tests
+name: Testler
 
 on:
   push:
@@ -7,22 +7,22 @@ on:
     branches: [ main, master ]
 
 jobs:
-  unittest:
+  birim_testleri:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [ "3.10", "3.12", "3.13" ]
 
     steps:
-      - name: Depoyu indir
+      - name: Depoyu Al
         uses: actions/checkout@v4
 
-      - name: Python ${{ matrix.python-version }} kurulumu
+      - name: Python ${{ matrix.python-version }} Kurulumu
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Birim testlerini çalıştır
+      - name: Birim Testlerini Çalıştır
         env:
           PYTHONPATH: src
         run: python -m unittest discover -s tests -v
