@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Depoyu Al
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Pages'i Hazırla
         uses: actions/configure-pages@v4
