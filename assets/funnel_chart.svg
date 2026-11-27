@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="758" height="370" viewBox="0 0 758 370">
+<rect width="100%" height="100%" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="24" y="44" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#111827">5 Adımlı Dönüşüm Hunisi (Funnel)</text>
+<text x="24" y="64" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#6b7280">Kayıttan ücretli aboneliğe kadar adım bazlı kullanıcı sayısı ve dönüşüm oranı</text>
+<text x="24" y="102.0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#1f2937">Kayıt (signup)</text>
+<rect x="219" y="82" width="340" height="32" rx="8" fill="#f3f4f6"/>
+<rect x="219" y="82" width="340.0" height="32" rx="8" fill="#0f62fe"/>
+<text x="573" y="102.0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">1500 kişi · %100.0</text>
+<text x="24" y="156.0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#1f2937">Kurulum (onboarding)</text>
+<rect x="219" y="136" width="340" height="32" rx="8" fill="#f3f4f6"/>
+<rect x="219" y="136" width="255.2" height="32" rx="8" fill="#2563eb"/>
+<text x="573" y="156.0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">1126 kişi · %75.1</text>
+<text x="573" y="170.0" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#dc2626">(kayıp %24.9)</text>
+<text x="24" y="210.0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#1f2937">İlk Proje (first_project)</text>
+<rect x="219" y="190" width="340" height="32" rx="8" fill="#f3f4f6"/>
+<rect x="219" y="190" width="164.3" height="32" rx="8" fill="#3b82f6"/>
+<text x="573" y="210.0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">725 kişi · %48.3</text>
+<text x="573" y="224.0" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#dc2626">(kayıp %35.6)</text>
+<text x="24" y="264.0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#1f2937">Ekip Daveti (invite_team)</text>
+<rect x="219" y="244" width="340" height="32" rx="8" fill="#f3f4f6"/>
+<rect x="219" y="244" width="72.5" height="32" rx="8" fill="#0284c7"/>
+<text x="573" y="264.0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">320 kişi · %21.3</text>
+<text x="573" y="278.0" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#dc2626">(kayıp %55.9)</text>
+<text x="24" y="318.0" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#1f2937">Abonelik (subscribed)</text>
+<rect x="219" y="298" width="340" height="32" rx="8" fill="#f3f4f6"/>
+<rect x="219" y="298" width="28.1" height="32" rx="8" fill="#0d9488"/>
+<text x="573" y="318.0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">124 kişi · %8.3</text>
+<text x="573" y="332.0" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#dc2626">(kayıp %61.2)</text>
+</svg>

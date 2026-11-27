@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kohort & Huni Analizi — Buğra Can Güçlü</title>
+<style>
+  :root {
+    --bg: #0e1117;
+    --surface: #1a1f2e;
+    --surface2: #242938;
+    --border: #2d3348;
+    --accent: #0078d4;
+    --accent2: #00b4d8;
+    --green: #00c853;
+    --yellow: #ffaa00;
+    --red: #ff4444;
+    --text: #e8eaf0;
+    --text2: #9199b0;
+    --text3: #5a6080;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #0d1b3e 0%, #1a1f2e 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .header-left { display: flex; align-items: center; gap: 14px; }
+  .header-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .header h1 { font-size: 20px; font-weight: 600; }
+  .header p { font-size: 13px; color: var(--text2); margin-top: 2px; }
+  .badge { background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 5px 14px; font-size: 12px; color: var(--text2); }
+
+  /* FILTER BAR */
+  .filter-bar {
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 12px 32px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .filter-label { font-size: 12px; color: var(--text2); font-weight: 500; }
+  .filter-btn {
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 20px;
+    padding: 5px 14px; font-size: 12px; color: var(--text2); cursor: pointer;
+    transition: all .2s;
+  }
+  .filter-btn:hover, .filter-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
+
+  /* LAYOUT */
+  .container { padding: 24px 32px; display: grid; gap: 20px; }
+
+  /* KPI CARDS */
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .kpi-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px 22px; position: relative; overflow: hidden;
+  }
+  .kpi-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+  .kpi-card.blue::before { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .kpi-card.green::before { background: linear-gradient(90deg, #00c853, #69f0ae); }
+  .kpi-card.yellow::before { background: linear-gradient(90deg, #ffaa00, #ffd740); }
+  .kpi-card.red::before { background: linear-gradient(90deg, #ff4444, #ff8a80); }
+  .kpi-label { font-size: 11px; color: var(--text2); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 10px; }
+  .kpi-value { font-size: 32px; font-weight: 700; line-height: 1; }
+  .kpi-sub { font-size: 12px; color: var(--text2); margin-top: 8px; }
+  .kpi-icon { position: absolute; right: 18px; top: 18px; font-size: 24px; opacity: .2; }
+
+  /* PANELS */
+  .panels-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .panel {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px;
+  }
+  .panel-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .panel-sub { font-size: 12px; color: var(--text2); margin-bottom: 20px; }
+
+  /* FUNNEL */
+  .funnel-item { margin-bottom: 10px; }
+  .funnel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .funnel-name { font-size: 13px; font-weight: 500; }
+  .funnel-nums { font-size: 12px; color: var(--text2); }
+  .funnel-bar-bg { background: var(--surface2); border-radius: 6px; height: 32px; overflow: hidden; position: relative; }
+  .funnel-bar { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 12px; font-size: 12px; font-weight: 600; transition: width 1s ease; }
+  .funnel-drop { font-size: 11px; color: var(--text3); margin-top: 2px; text-align: right; }
+
+  /* COHORT HEATMAP */
+  .cohort-table { width: 100%; border-collapse: separate; border-spacing: 3px; font-size: 12px; }
+  .cohort-table th { color: var(--text2); font-weight: 500; text-align: center; padding: 4px 6px; font-size: 11px; }
+  .cohort-table th.row-head { text-align: left; }
+  .cohort-cell {
+    text-align: center; padding: 8px 4px; border-radius: 6px; font-weight: 600; font-size: 12px;
+    transition: transform .15s;
+  }
+  .cohort-cell:hover { transform: scale(1.05); cursor: default; }
+
+  /* CHANNELS */
+  .channel-item { margin-bottom: 14px; }
+  .channel-header { display: flex; justify-content: space-between; margin-bottom: 5px; }
+  .channel-name { font-size: 13px; font-weight: 500; }
+  .channel-users { font-size: 11px; color: var(--text2); }
+  .channel-bars { display: flex; gap: 4px; }
+  .bar-wrap { flex: 1; }
+  .bar-label { font-size: 10px; color: var(--text3); margin-bottom: 2px; }
+  .mini-bar-bg { background: var(--surface2); border-radius: 4px; height: 20px; overflow: hidden; }
+  .mini-bar { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 6px; font-size: 10px; font-weight: 600; }
+
+  /* BOTTOM ROW */
+  .bottom-row { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+
+  /* JOURNEY DOTS */
+  .journey-step { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .step-dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .step-info { flex: 1; }
+  .step-name { font-size: 13px; font-weight: 500; }
+  .step-pct { font-size: 12px; color: var(--text2); }
+  .step-bar-bg { background: var(--surface2); border-radius: 4px; height: 6px; margin-top: 5px; }
+  .step-bar { height: 100%; border-radius: 4px; }
+
+  /* FOOTER */
+  .footer { text-align: center; padding: 20px; color: var(--text3); font-size: 11px; border-top: 1px solid var(--border); }
+  .footer a { color: var(--accent2); text-decoration: none; }
+
+  /* TOOLTIP */
+  .tooltip-wrap { position: relative; display: inline-block; }
+  .tooltip-text {
+    visibility: hidden; background: #0d1b3e; color: var(--text); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 12px; font-size: 11px; white-space: nowrap;
+    position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%);
+    z-index: 10; opacity: 0; transition: opacity .2s;
+  }
+  .tooltip-wrap:hover .tooltip-text { visibility: visible; opacity: 1; }
+
+  /* ANIMATE */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+  .kpi-card, .panel { animation: fadeUp .4s ease both; }
+  .kpi-card:nth-child(1) { animation-delay:.05s; }
+  .kpi-card:nth-child(2) { animation-delay:.1s; }
+  .kpi-card:nth-child(3) { animation-delay:.15s; }
+  .kpi-card:nth-child(4) { animation-delay:.2s; }
+
+  @media (max-width: 900px) {
+    .kpi-row { grid-template-columns: repeat(2,1fr); }
+    .panels-row, .bottom-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="header-icon">📊</div>
+    <div>
+      <h1>Kohort & Huni Analizi</h1>
+      <p>SaaS Ürün Analitiği — Sentetik Veri · 1500 Kullanıcı · 6 Ay</p>
+    </div>
+  </div>
+  <div class="badge">🤖 AI ile üretilmiş veri</div>
+</div>
+
+<div class="filter-bar">
+  <span class="filter-label">Kanal:</span>
+  <button class="filter-btn active" onclick="filterChannel('tumu')">Tümü</button>
+  <button class="filter-btn" onclick="filterChannel('Referans')">Referans</button>
+  <button class="filter-btn" onclick="filterChannel('Organik')">Organik</button>
+  <button class="filter-btn" onclick="filterChannel('Sosyal Medya')">Sosyal Medya</button>
+  <button class="filter-btn" onclick="filterChannel('Ücretli Arama')">Ücretli Arama</button>
+</div>
+
+<div class="container">
+
+  <!-- KPI CARDS -->
+  <div class="kpi-row">
+    <div class="kpi-card blue">
+      <div class="kpi-icon">👥</div>
+      <div class="kpi-label">Toplam Kullanıcı</div>
+      <div class="kpi-value" id="kpi-users">1.500</div>
+      <div class="kpi-sub">6 aylık kayıt dönemi</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-icon">✅</div>
+      <div class="kpi-label">Abonelik Oranı</div>
+      <div class="kpi-value" id="kpi-conv">%8,27</div>
+      <div class="kpi-sub">124 kullanıcı ücretli plana geçti</div>
+    </div>
+    <div class="kpi-card yellow">
+      <div class="kpi-icon">📈</div>
+      <div class="kpi-label">Ort. 1. Ay Tutundurma</div>
+      <div class="kpi-value" id="kpi-ret">%49,9</div>
+      <div class="kpi-sub">Tüm kohortların ortalaması</div>
+    </div>
+    <div class="kpi-card red">
+      <div class="kpi-icon">⚠️</div>
+      <div class="kpi-label">En Büyük Kayıp Noktası</div>
+      <div class="kpi-value" id="kpi-drop">%61,25</div>
+      <div class="kpi-sub">Ekip Daveti → Abonelik adımında</div>
+    </div>
+  </div>
+
+  <!-- FUNNEL + COHORT -->
+  <div class="panels-row">
+
+    <!-- FUNNEL -->
+    <div class="panel">
+      <div class="panel-title">🔽 Dönüşüm Hunisi</div>
+      <div class="panel-sub">Kullanıcıların adım adım ilerleyişi</div>
+      <div id="funnel-container"></div>
+    </div>
+
+    <!-- COHORT HEATMAP -->
+    <div class="panel">
+      <div class="panel-title">🟩 Kohort Tutundurma Matrisi</div>
+      <div class="panel-sub">Her kohortun aylık aktif kalma oranı (%)</div>
+      <div style="overflow-x:auto;">
+        <table class="cohort-table" id="cohort-table"></table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CHANNELS + JOURNEY -->
+  <div class="bottom-row">
+
+    <!-- CHANNELS -->
+    <div class="panel">
+      <div class="panel-title">📡 Kanal Performansı</div>
+      <div class="panel-sub">Aktivasyon ve ücretli dönüşüm oranları kanala göre</div>
+      <div id="channels-container"></div>
+    </div>
+
+    <!-- JOURNEY SUMMARY -->
+    <div class="panel">
+      <div class="panel-title">🗺️ Kullanıcı Yolculuğu</div>
+      <div class="panel-sub">Her adıma ulaşan kullanıcı oranı</div>
+      <div id="journey-container"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="footer">
+  Buğra Can Güçlü · cohort-funnel-sql projesi ·
+  <a href="https://github.com/bugracan0719" target="_blank">GitHub</a> ·
+  Veriler sentetik olup gerçek kullanıcıları temsil etmez
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// VERİ
+// ═══════════════════════════════════════════
+const funnelData = [
+  { ad: 'Kayıt',       kullanici: 1500, genelPct: 100.00, adimPct: 100.00, kayipPct: 0.00 },
+  { ad: 'Kurulum',     kullanici: 1126, genelPct: 75.07,  adimPct: 75.07,  kayipPct: 24.93 },
+  { ad: 'İlk Proje',  kullanici: 725,  genelPct: 48.33,  adimPct: 64.39,  kayipPct: 35.61 },
+  { ad: 'Ekip Daveti', kullanici: 320,  genelPct: 21.33,  adimPct: 44.14,  kayipPct: 55.86 },
+  { ad: 'Abonelik',   kullanici: 124,  genelPct: 8.27,   adimPct: 38.75,  kayipPct: 61.25 },
+];
+
+const cohortData = [
+  { ay: '2026-01', boyut: 269, aylar: [100.00, 51.30, 39.03, 28.62, 24.54, 25.65] },
+  { ay: '2026-02', boyut: 246, aylar: [100.00, 47.15, 37.40, 28.46, 27.64, null] },
+  { ay: '2026-03', boyut: 259, aylar: [100.00, 50.19, 34.36, 24.71, null, null] },
+  { ay: '2026-04', boyut: 246, aylar: [100.00, 47.56, 35.37, null, null, null] },
+  { ay: '2026-05', boyut: 239, aylar: [100.00, 53.56, null, null, null, null] },
+  { ay: '2026-06', boyut: 241, aylar: [100.00, null, null, null, null, null] },
+];
+
+const channelData = [
+  { kanal: 'Referans',       kullanici: 307, aktPct: 65.80, ucretliPct: 16.61, renk: '#0078d4' },
+  { kanal: 'Organik',        kullanici: 508, aktPct: 53.94, ucretliPct: 9.45,  renk: '#00b4d8' },
+  { kanal: 'Ücretli Arama', kullanici: 422, aktPct: 41.94, ucretliPct: 3.32,  renk: '#ffaa00' },
+  { kanal: 'Sosyal Medya',   kullanici: 263, aktPct: 27.38, ucretliPct: 4.18,  renk: '#ff6b6b' },
+];
+
+// ═══════════════════════════════════════════
+// FUNNEL
+// ═══════════════════════════════════════════
+const funnelColors = ['#0078d4','#0096b7','#00a86b','#ffaa00','#ff6b35'];
+
+function renderFunnel(data) {
+  const c = document.getElementById('funnel-container');
+  c.innerHTML = '';
+  const maxUsers = data[0].kullanici;
+  data.forEach((d, i) => {
+    const pct = (d.kullanici / maxUsers * 100).toFixed(0);
+    c.innerHTML += `
+      <div class="funnel-item">
+        <div class="funnel-header">
+          <span class="funnel-name">${i+1}. ${d.ad}</span>
+          <span class="funnel-nums">${d.kullanici.toLocaleString('tr')} kişi · %${d.genelPct.toFixed(2)}</span>
+        </div>
+        <div class="funnel-bar-bg">
+          <div class="funnel-bar" id="fbar-${i}" style="width:0%;background:${funnelColors[i]};">
+            <span style="color:white;">${d.kullanici.toLocaleString('tr')}</span>
+          </div>
+        </div>
+        ${d.kayipPct > 0 ? `<div class="funnel-drop">▼ Bu adımda %${d.kayipPct.toFixed(2)} kayıp</div>` : ''}
+      </div>`;
+  });
+  // animate bars
+  setTimeout(() => {
+    data.forEach((d, i) => {
+      const pct = (d.kullanici / maxUsers * 100).toFixed(1);
+      document.getElementById(`fbar-${i}`).style.width = pct + '%';
+    });
+  }, 100);
+}
+
+// ═══════════════════════════════════════════
+// COHORT HEATMAP
+// ═══════════════════════════════════════════
+function pctToColor(pct) {
+  if (pct === null) return { bg: 'transparent', fg: 'transparent' };
+  if (pct >= 80) return { bg: '#1a4731', fg: '#00c853' };
+  if (pct >= 60) return { bg: '#1a3d2b', fg: '#69f0ae' };
+  if (pct >= 40) return { bg: '#2d3a1a', fg: '#aeea00' };
+  if (pct >= 25) return { bg: '#3d2e1a', fg: '#ffd740' };
+  if (pct >= 15) return { bg: '#3d1f1a', fg: '#ff8a65' };
+  return { bg: '#3d1a1a', fg: '#ff5252' };
+}
+
+function renderCohort() {
+  const tbl = document.getElementById('cohort-table');
+  const maxAy = 6;
+  let html = '<thead><tr><th class="row-head">Kohort</th><th class="row-head" style="text-align:center;padding:4px 8px;">Boyut</th>';
+  for (let i = 0; i < maxAy; i++) html += `<th>Ay ${i}</th>`;
+  html += '</tr></thead><tbody>';
+
+  cohortData.forEach(row => {
+    html += `<tr>
+      <td style="padding:4px 6px;font-size:12px;white-space:nowrap;color:var(--text2)">${row.ay}</td>
+      <td style="padding:4px 8px;text-align:center;font-size:12px;color:var(--text2)">${row.boyut}</td>`;
+    for (let i = 0; i < maxAy; i++) {
+      const v = row.aylar[i];
+      const col = pctToColor(v);
+      if (v === null) {
+        html += `<td class="cohort-cell" style="background:var(--surface2);color:var(--text3);">—</td>`;
+      } else {
+        html += `<td class="cohort-cell" style="background:${col.bg};color:${col.fg};" title="${row.ay} · Ay ${i}: %${v.toFixed(1)}">%${v.toFixed(0)}</td>`;
+      }
+    }
+    html += '</tr>';
+  });
+  html += '</tbody>';
+  tbl.innerHTML = html;
+}
+
+// ═══════════════════════════════════════════
+// CHANNELS
+// ═══════════════════════════════════════════
+function renderChannels(data) {
+  const c = document.getElementById('channels-container');
+  c.innerHTML = '';
+  const maxAkt = Math.max(...data.map(d => d.aktPct));
+  const maxUcr = Math.max(...data.map(d => d.ucretliPct));
+
+  data.forEach(d => {
+    c.innerHTML += `
+      <div class="channel-item">
+        <div class="channel-header">
+          <span class="channel-name">📡 ${d.kanal}</span>
+          <span class="channel-users">${d.kullanici.toLocaleString('tr')} kullanıcı</span>
+        </div>
+        <div class="channel-bars">
+          <div class="bar-wrap">
+            <div class="bar-label">Aktivasyon</div>
+            <div class="mini-bar-bg">
+              <div class="mini-bar" style="width:${(d.aktPct/maxAkt*100).toFixed(0)}%;background:${d.renk};color:white;">
+                %${d.aktPct.toFixed(1)}
+              </div>
+            </div>
+          </div>
+          <div class="bar-wrap">
+            <div class="bar-label">Ücretli Dönüşüm</div>
+            <div class="mini-bar-bg">
+              <div class="mini-bar" style="width:${(d.ucretliPct/maxUcr*100).toFixed(0)}%;background:var(--green);color:#003820;">
+                %${d.ucretliPct.toFixed(1)}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  });
+}
+
+// ═══════════════════════════════════════════
+// JOURNEY
+// ═══════════════════════════════════════════
+function renderJourney() {
+  const steps = [
+    { ad: 'Kayıt',       pct: 100.0, renk: '#0078d4' },
+    { ad: 'Kurulum',     pct: 75.07, renk: '#0096b7' },
+    { ad: 'İlk Proje',  pct: 48.33, renk: '#00a86b' },
+    { ad: 'Ekip Daveti', pct: 21.33, renk: '#ffaa00' },
+    { ad: 'Abonelik',   pct: 8.27,  renk: '#ff6b35' },
+  ];
+  const c = document.getElementById('journey-container');
+  c.innerHTML = steps.map((s, i) => `
+    <div class="journey-step">
+      <div class="step-dot" style="background:${s.renk}20;color:${s.renk};border:2px solid ${s.renk};">${i+1}</div>
+      <div class="step-info">
+        <div style="display:flex;justify-content:space-between;">
+          <span class="step-name">${s.ad}</span>
+          <span style="font-size:12px;font-weight:700;color:${s.renk}">%${s.pct.toFixed(1)}</span>
+        </div>
+        <div class="step-bar-bg">
+          <div class="step-bar" style="width:${s.pct}%;background:${s.renk};"></div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+// ═══════════════════════════════════════════
+// FILTER
+// ═══════════════════════════════════════════
+const channelFunnelData = {
+  'Referans':       [{ ad:'Kayıt',kullanici:307,genelPct:100,kayipPct:0},{ad:'Kurulum',kullanici:261,genelPct:85.0,kayipPct:15.0},{ad:'İlk Proje',kullanici:202,genelPct:65.8,kayipPct:22.6},{ad:'Ekip Daveti',kullanici:90,genelPct:29.3,kayipPct:55.4},{ad:'Abonelik',kullanici:51,genelPct:16.6,kayipPct:43.3}],
+  'Organik':        [{ ad:'Kayıt',kullanici:508,genelPct:100,kayipPct:0},{ad:'Kurulum',kullanici:392,genelPct:77.2,kayipPct:22.8},{ad:'İlk Proje',kullanici:274,genelPct:53.9,kayipPct:30.1},{ad:'Ekip Daveti',kullanici:110,genelPct:21.7,kayipPct:59.9},{ad:'Abonelik',kullanici:48,genelPct:9.4,kayipPct:56.4}],
+  'Sosyal Medya':   [{ ad:'Kayıt',kullanici:263,genelPct:100,kayipPct:0},{ad:'Kurulum',kullanici:168,genelPct:63.9,kayipPct:36.1},{ad:'İlk Proje',kullanici:72,genelPct:27.4,kayipPct:57.1},{ad:'Ekip Daveti',kullanici:28,genelPct:10.6,kayipPct:61.1},{ad:'Abonelik',kullanici:11,genelPct:4.2,kayipPct:60.7}],
+  'Ücretli Arama':  [{ ad:'Kayıt',kullanici:422,genelPct:100,kayipPct:0},{ad:'Kurulum',kullanici:305,genelPct:72.3,kayipPct:27.7},{ad:'İlk Proje',kullanici:177,genelPct:41.9,kayipPct:42.0},{ad:'Ekip Daveti',kullanici:92,genelPct:21.8,kayipPct:48.0},{ad:'Abonelik',kullanici:14,genelPct:3.3,kayipPct:84.8}],
+};
+
+function filterChannel(kanal) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  if (kanal === 'tumu') {
+    renderFunnel(funnelData);
+    document.getElementById('kpi-users').textContent = '1.500';
+    document.getElementById('kpi-conv').textContent = '%8,27';
+  } else {
+    const d = channelFunnelData[kanal];
+    if (d) {
+      renderFunnel(d);
+      const top = d[0].kullanici;
+      const bot = d[d.length-1].kullanici;
+      document.getElementById('kpi-users').textContent = top.toLocaleString('tr');
+      document.getElementById('kpi-conv').textContent = '%' + (bot/top*100).toFixed(2).replace('.',',');
+    }
+  }
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+renderFunnel(funnelData);
+renderCohort();
+renderChannels(channelData);
+renderJourney();
+</script>
+</body>
+</html>

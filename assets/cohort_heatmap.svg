@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="690" height="378" viewBox="0 0 690 378">
+<rect width="100%" height="100%" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="24" y="44" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#111827">Aylık Kohort Tutundurma Isı Haritası</text>
+<text x="24" y="63" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#6b7280">Kayıt sonrası N. ayda aktif olarak geri dönen kullanıcı yüzdesi</text>
+<text x="24" y="90" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#374151">Kohort</text>
+<text x="188" y="90" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#374151">Kullanıcı</text>
+<text x="243.0" y="90" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#374151">Ay 0</text>
+<text x="321.0" y="90" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#374151">Ay 1</text>
+<text x="399.0" y="90" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#374151">Ay 2</text>
+<text x="477.0" y="90" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#374151">Ay 3</text>
+<text x="555.0" y="90" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#374151">Ay 4</text>
+<text x="633.0" y="90" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#374151">Ay 5</text>
+<text x="24" y="124.0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#1f2937">2026-01</text>
+<text x="188" y="124.0" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#4b5563">269</text>
+<rect x="206" y="102" width="74" height="36" rx="6" fill="#0f62fe"/>
+<text x="243.0" y="124.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff">%100.0</text>
+<rect x="284" y="102" width="74" height="36" rx="6" fill="#7aa8fe"/>
+<text x="321.0" y="124.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff">%51.3</text>
+<rect x="362" y="102" width="74" height="36" rx="6" fill="#95baff"/>
+<text x="399.0" y="124.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#161616">%39.0</text>
+<rect x="440" y="102" width="74" height="36" rx="6" fill="#abc9ff"/>
+<text x="477.0" y="124.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#161616">%28.6</text>
+<rect x="518" y="102" width="74" height="36" rx="6" fill="#b4cfff"/>
+<text x="555.0" y="124.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#161616">%24.5</text>
+<rect x="596" y="102" width="74" height="36" rx="6" fill="#b2cdff"/>
+<text x="633.0" y="124.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#161616">%25.6</text>
+<text x="24" y="164.0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#1f2937">2026-02</text>
+<text x="188" y="164.0" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#4b5563">246</text>
+<rect x="206" y="142" width="74" height="36" rx="6" fill="#0f62fe"/>
+<text x="243.0" y="164.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff">%100.0</text>
+<rect x="284" y="142" width="74" height="36" rx="6" fill="#83aeff"/>
+<text x="321.0" y="164.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#161616">%47.1</text>
+<rect x="362" y="142" width="74" height="36" rx="6" fill="#98bcff"/>
+<text x="399.0" y="164.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#161616">%37.4</text>
+<rect x="440" y="142" width="74" height="36" rx="6" fill="#acc9ff"/>
+<text x="477.0" y="164.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#161616">%28.5</text>
+<rect x="518" y="142" width="74" height="36" rx="6" fill="#adcaff"/>
+<text x="555.0" y="164.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#161616">%27.6</text>
+<rect x="596" y="142" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+<text x="24" y="204.0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#1f2937">2026-03</text>
+<text x="188" y="204.0" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#4b5563">259</text>
+<rect x="206" y="182" width="74" height="36" rx="6" fill="#0f62fe"/>
+<text x="243.0" y="204.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff">%100.0</text>
+<rect x="284" y="182" width="74" height="36" rx="6" fill="#7caafe"/>
+<text x="321.0" y="204.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff">%50.2</text>
+<rect x="362" y="182" width="74" height="36" rx="6" fill="#9fc1ff"/>
+<text x="399.0" y="204.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#161616">%34.4</text>
+<rect x="440" y="182" width="74" height="36" rx="6" fill="#b4ceff"/>
+<text x="477.0" y="204.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#161616">%24.7</text>
+<rect x="518" y="182" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+<rect x="596" y="182" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+<text x="24" y="244.0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#1f2937">2026-04</text>
+<text x="188" y="244.0" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#4b5563">246</text>
+<rect x="206" y="222" width="74" height="36" rx="6" fill="#0f62fe"/>
+<text x="243.0" y="244.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff">%100.0</text>
+<rect x="284" y="222" width="74" height="36" rx="6" fill="#82aeff"/>
+<text x="321.0" y="244.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#161616">%47.6</text>
+<rect x="362" y="222" width="74" height="36" rx="6" fill="#9dbfff"/>
+<text x="399.0" y="244.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#161616">%35.4</text>
+<rect x="440" y="222" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+<rect x="518" y="222" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+<rect x="596" y="222" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+<text x="24" y="284.0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#1f2937">2026-05</text>
+<text x="188" y="284.0" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#4b5563">239</text>
+<rect x="206" y="262" width="74" height="36" rx="6" fill="#0f62fe"/>
+<text x="243.0" y="284.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff">%100.0</text>
+<rect x="284" y="262" width="74" height="36" rx="6" fill="#75a5fe"/>
+<text x="321.0" y="284.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff">%53.6</text>
+<rect x="362" y="262" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+<rect x="440" y="262" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+<rect x="518" y="262" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+<rect x="596" y="262" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+<text x="24" y="324.0" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#1f2937">2026-06</text>
+<text x="188" y="324.0" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#4b5563">241</text>
+<rect x="206" y="302" width="74" height="36" rx="6" fill="#0f62fe"/>
+<text x="243.0" y="324.0" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#ffffff">%100.0</text>
+<rect x="284" y="302" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+<rect x="362" y="302" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+<rect x="440" y="302" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+<rect x="518" y="302" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+<rect x="596" y="302" width="74" height="36" rx="6" fill="#f9fafb" stroke="#f3f4f6"/>
+</svg>
