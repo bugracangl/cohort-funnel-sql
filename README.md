@@ -234,6 +234,6 @@ python -m cohort_funnel.cli export-bi --db data/analytics.db --out-dir output/po
 
 ---
 
-## ⚠️ Dürüstlük ve Şeffaflık Notu
+## ⚠️ Dürüstlük ve Şeffaflık Notu (Hatırlatma)
 
 > **Not:** Bu proje tamamen yapay (sentetik) verilerle oluşturulmuş olup, Claude ve Antigravity araçlarının yardımıyla geliştirilen bir deneme ve portföy projesidir.
