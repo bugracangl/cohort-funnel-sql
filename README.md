@@ -5,7 +5,7 @@
 [![SQLite](https://img.shields.io/badge/veritaban%C4%B1-SQLite-003B57.svg)](https://www.sqlite.org/)
 [![Bağımlılık](https://img.shields.io/badge/ba%C4%9F%C4%B1ml%C4%B1l%C4%B1k-s%C4%B1f%C4%B1r%20harici%20paket-brightgreen.svg)](#)
 [![Lisans: MIT](https://img.shields.io/badge/lisans-MIT-green.svg)](LICENSE)
-[![Dashboard](https://img.shields.io/badge/🌐%20interaktif-dashboard-blueviolet)](https://bugracangl.github.io/cohort-funnel-sql/assets/dashboard.html)
+[![Dashboard](https://img.shields.io/badge/🌐%20interaktif-dashboard-blueviolet)](https://bugracangl.github.io/cohort-funnel-sql/)
 
 **Python** ve **SQLite** kullanarak sıfır harici bağımlılıkla çalışan ürün analitiği projesi. Tek komutla örnek kullanıcı ve olay (event) verisi üretir, analitik SQL sorgularını çalıştırır ve hem terminal tablosu hem de görsel raporlar oluşturur:
 
@@ -201,3 +201,39 @@ python -m unittest discover -s tests -v
 ```bash
 PYTHONPATH=src python3 -m unittest discover -s tests -v
 ```
+
+---
+
+## 🌐 Canlı Dashboard (GitHub Pages)
+
+Projenin interaktif dashboard'u GitHub Pages üzerinden yayınlanmıştır:
+
+**[https://bugracangl.github.io/cohort-funnel-sql/](https://bugracangl.github.io/cohort-funnel-sql/)**
+
+> `index.html` dosyası (kopya `dashboard.html`) repo kökündedir; GitHub Pages bunu otomatik olarak kök sayfa olarak sunar.
+
+---
+
+## 📊 Power BI Desktop Bağlantısı
+
+Bu proje Power BI Desktop entegrasyonu için hazır SQL VIEW katmanı ve CSV çıktıları içerir.
+
+**SQL VIEW'ları Görüntüle / CSV Dışa Aktar:**
+```bash
+# SQL VIEW tanımlarını incele
+cat sql/powerbi_views.sql
+
+# Power BI için CSV tabloları üret (6 tablo)
+python -m cohort_funnel.cli export-bi --db data/analytics.db --out-dir output/powerbi
+```
+
+**Power BI Desktop'ta Bağlantı:**
+1. Power BI Desktop → **Veri Al** → **Metin/CSV** → `output/powerbi/` klasöründeki 6 `.csv` dosyasını seçin
+2. Alternatif: **SQL Server** bağlayıcısı ile `sql/powerbi_views.sql` içindeki VIEW tanımlarını kopyalayıp Power BI'da **Boş Sorgu** → **Gelişmiş Düzenleyici** ile yapıştırın
+3. Tablolar: `bi_huni_genel`, `bi_huni_kanal`, `bi_kohort_genel`, `bi_kohort_kanal`, `bi_kanal_ozet`, `bi_kanal_huni_adim`
+
+---
+
+## ⚠️ Dürüstlük ve Şeffaflık Notu
+
+> **Not:** Bu proje tamamen yapay (sentetik) verilerle oluşturulmuş olup, Claude ve Antigravity araçlarının yardımıyla geliştirilen bir deneme ve portföy projesidir.
