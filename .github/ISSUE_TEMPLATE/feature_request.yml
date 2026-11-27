@@ -1,0 +1,44 @@
+name: ✨ Özellik Önerisi
+description: Yeni bir özellik veya iyileştirme önerin
+title: "[FEATURE]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Harika bir fikriniz var! Detayları paylaşın.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Çözülmesi Gereken Sorun / İhtiyaç
+      description: Bu özellik hangi sorunu çözer? Ne eksik?
+      placeholder: "Örn: Power BI export'ta tarih formatı ISO 8601 olmuyor, bu yüzden..."
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Önerilen Çözüm
+      description: Nasıl bir çözüm hayal ediyorsunuz?
+      placeholder: "Örn: `export-bi` komutuna `--date-format iso` parametresi eklenebilir..."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatif Çözümler
+      description: Başka yaklaşımlar düşündünüz mü?
+  - type: textarea
+    id: context
+    attributes:
+      label: Ek Bağlam / Ekran Görüntüleri
+      description: Mockup, diyagram veya referans varsa paylaşın
+  - type: checkboxes
+    id: willingness
+    attributes:
+      label: Katkı Sağlama
+      options:
+        - label: Bu özelliği kendim implement etmek isterim (PR açabilirim)
+          required: false
+        - label: Sadece fikir öneriyorum, implementasyon için yardım isteyebilirim
+          required: false

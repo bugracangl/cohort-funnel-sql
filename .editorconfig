@@ -1,0 +1,48 @@
+# EditorConfig - https://editorconfig.org
+# Bu dosya çoğu editörde (VS Code, PyCharm, Vim, vb.) otomatik tanınır
+
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{py,pyw}]
+indent_size = 4
+max_line_length = 100
+
+[*.{md,markdown}]
+trim_trailing_whitespace = false
+max_line_length = 0
+
+[*.{sql}]
+indent_size = 4
+max_line_length = 120
+
+[*.{yml,yaml}]
+indent_size = 2
+
+[*.{json,jsonc}]
+indent_size = 2
+
+[*.{toml}]
+indent_size = 2
+
+[*.{bat,batx,cmd}]
+end_of_line = crlf
+
+[Makefile]
+indent_style = tab
+indent_size = 4
+
+[*.{svg,html,css,js}]
+indent_size = 2
+
+# Python ruff/black uyumlu ayarlar
+[*.py]
+# Ruff format ayarlarıyla uyumlu
+# max_line_length = 88  # Black default, ruff'da 100 kullanıyoruz

@@ -1,0 +1,57 @@
+name: 🐛 Hata Bildirimi
+description: Bir hata bulduysanız bize bildirin
+title: "[BUG]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Teşekkürler! Bu projeyi daha iyi hale getirmek için zaman ayırdığınız için.
+  - type: textarea
+    id: description
+    attributes:
+      label: Hata Açıklaması
+      description: Ne oldu? Ne bekliyordunuz?
+      placeholder: "Örn: Funnel analizi çalıştırırken `KeyError: 'channel'` hatası alıyorum..."
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Yeniden Üretim Adımları
+      description: Hatası nasıl tekrarlanır?
+      placeholder: |
+        1. `python -m cohort_funnel.cli demo` komutunu çalıştırın
+        2. ...
+        3. Hata oluşur
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: İşletim Sistemi
+      placeholder: "Windows 11 / macOS 14 / Ubuntu 22.04"
+    validations:
+      required: true
+  - type: input
+    id: python_version
+    attributes:
+      label: Python Sürümü
+      placeholder: "3.10 / 3.11 / 3.12"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Hata Çıktısı / Loglar
+      description: Varsa tam hata mesajını yapıştırın
+      render: shell
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Kontrol Listesi
+      options:
+        - label: README'deki "Hızlı Başlangıç" adımlarını denedim
+          required: true
+        - label: Mevcut issue'larda arama yaptım (tekrar önlemek için)
+          required: true
